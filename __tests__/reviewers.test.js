@@ -59,14 +59,10 @@ describe('app routes', () => {
 
   it('deletes a reviewer by id', async() => {
     const reviewer = await getReviewer();
-    const reviews = await getReviews({ reviewerId: reviewer._id });
-    
-    if(reviews === []){
-      return request(app)
-        .delete(`/api/v1/reviewers/${reviewer._id}`)
-        .then(res => {
-          expect(res.body).toEqual(reviewer);
-        });
-    } else return;
+    return request(app)
+      .delete(`/api/v1/reviewers/${reviewer._id}`)
+      .then(res => {
+        expect(res.body).toEqual(reviewer);
+      });
   });
 });
