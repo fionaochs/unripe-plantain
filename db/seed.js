@@ -41,7 +41,7 @@ module.exports = async({ studiosToCreate = 10, actorsToCreate = 10, reviewersToC
     }]
   })));
 
-  const reviews = await Review.create([...Array(reviewsToCreate)].map(() => ({
+  await Review.create([...Array(reviewsToCreate)].map(() => ({
     rating: chance.integer({ min: 1, max: 5 }),
     reviewerId: chance.pickone(reviewers)._id,
     review: chance.sentence(),
